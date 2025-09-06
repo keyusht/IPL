@@ -18,13 +18,13 @@ import java.util.Optional;
 @Service
 public class TeamServiceImplJpa  implements TeamService {
 
-    private TeamRepository teamRepository;
-
     @Autowired
     CricketerRepository cricketerRepository;
 
     @Autowired
     MatchRepository matchRepository;
+
+    private TeamRepository teamRepository;
 
     @Autowired
     public TeamServiceImplJpa(TeamRepository teamRepository) {
@@ -38,6 +38,11 @@ public class TeamServiceImplJpa  implements TeamService {
 
     @Override
     public int addTeam(Team team) throws SQLException {
+        Optional<Team> sameNameTeam = teamRepository.findByTeamName(team.getTeamName());
+        
+        if ((sameNameTeam.isPresent())) {
+            throw new TeamAlreadyExistsException("Team with the same name already exists, TeamName = " + team.getTeamName());
+        }
         return teamRepository.save(team).getTeamId();
     }
 
@@ -50,12 +55,30 @@ public class TeamServiceImplJpa  implements TeamService {
 
     @Override
     public Team getTeamById(int teamId) throws SQLException {
-        return teamRepository.findByTeamId(teamId);
+        Optional<Team> team = teamRepository.findByTeamId(teamId);
+        // if (team != null) {
+        //     return team;
+        // }
+        // throw new TeamDoesNotExistException("Team with teamId = " + teamId + " does not exist");
+        if(!(team.isPresent())){
+            throw new TeamDoesNotExistException("Team with teamId = " + teamId + " does not exist");
+        }
+
+        return team.get();
+
     }
 
     @Override
     public void updateTeam(Team team) throws SQLException {
-        teamRepository.save(team);
+        Optional<Team> sameNameTeam = teamRepository.findByTeamName(team.getTeamName());
+        
+        if (sameNameTeam.isPresent()) {
+            throw new TeamAlreadyExistsException("Team with the same name already exists, TeamName = " + team.getTeamName());
+        }
+        else{
+            teamRepository.save(team);
+        }
+        
     }
 
     @Override
