@@ -1,25 +1,20 @@
 package com.wecp.progressive.service.impl;
 
-import java.sql.SQLException;
-import java.util.Comparator;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.wecp.progressive.entity.Cricketer;
 import com.wecp.progressive.exception.TeamCricketerLimitExceededException;
 import com.wecp.progressive.repository.CricketerRepository;
-import com.wecp.progressive.repository.VoteRepository;
 import com.wecp.progressive.service.CricketerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class CricketerServiceImplJpa implements CricketerService {
 
     private CricketerRepository cricketerRepository;
-
-    // @Autowired
-    // private VoteRepository voteRepository;
 
     @Autowired
     public CricketerServiceImplJpa(CricketerRepository cricketerRepository) {
@@ -32,11 +27,10 @@ public class CricketerServiceImplJpa implements CricketerService {
     }
 
     @Override
-    public Integer addCricketer(Cricketer cricketer) throws SQLException {
-        int noOfCricketers = cricketerRepository.findAll().size();
-        if(noOfCricketers >= 11)
-        {
-            throw new TeamCricketerLimitExceededException("already 11 cricekters");
+    public Integer addCricketer(Cricketer cricketer) throws TeamCricketerLimitExceededException {
+        Long totalCricketersInTeam = cricketerRepository.countByTeam_TeamId(cricketer.getTeam().getTeamId());
+        if (totalCricketersInTeam == 11) {
+            throw new TeamCricketerLimitExceededException("Team = " + cricketer.getTeam().getTeamId() + " already has reached its maximum limit of 11 cricketers");
         }
         return cricketerRepository.save(cricketer).getCricketerId();
     }
@@ -55,9 +49,7 @@ public class CricketerServiceImplJpa implements CricketerService {
 
     @Override
     public void deleteCricketer(int cricketerId) throws SQLException {
-        // voteRepository.deleteByCricketerId(cricketerId);
         cricketerRepository.deleteById(cricketerId);
-        
     }
 
     @Override
