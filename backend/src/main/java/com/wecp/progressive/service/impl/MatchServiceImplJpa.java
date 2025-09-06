@@ -1,6 +1,7 @@
 package com.wecp.progressive.service.impl;
 
 import com.wecp.progressive.entity.Match;
+import com.wecp.progressive.exception.NoMatchesFoundException;
 import com.wecp.progressive.repository.MatchRepository;
 import com.wecp.progressive.service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,11 @@ public class MatchServiceImplJpa implements MatchService {
     }
 
     @Override
-    public List<Match> getAllMatchesByStatus(String status) throws SQLException {
+    public List<Match> getAllMatchesByStatus(String status) throws NoMatchesFoundException {
         List<Match> matchList = matchRepository.findAllByStatus(status);
+        if (matchList.isEmpty()) {
+            throw new NoMatchesFoundException("No matches found with status = " + status);
+        }
         return matchList;
     }
 }
