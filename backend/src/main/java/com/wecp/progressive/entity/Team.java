@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "teams")
+@Table(name = "team")
 public class Team implements Comparable<Team> {
 
         @Id
