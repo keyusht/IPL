@@ -1,0 +1,68 @@
+/* Container for cricketers */
+.cricketer-card {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-left: 6px solid #0072ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cricketer-card:hover {
+  transform: scale(1.02);
+}
+
+/* Cricketer details */
+.cricketer-card p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.cricketer-card strong {
+  color: #0072ff;
+}
+
+/* Toggle Button */
+button {
+  padding: 10px 20px;
+  background-color: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #005ecb;
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* No Cricketers Message */
+p {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .cricketer-card {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+}

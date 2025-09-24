@@ -1,0 +1,115 @@
+/* Container */
+.team-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.team-form-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+  color: #2c3e50;
+}
+
+/* Form Labels */
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #0072ff;
+  outline: none;
+}
+
+/* Error Messages */
+.error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+.error small {
+  display: block;
+}
+
+/* Success Message */
+.success {
+  color: #2ecc71;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #005ecb;
+  transform: scale(1.03);
+}
+
+button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Dashboard Link */
+.task-list {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #0072ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.task-list:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .team-form-container {
+    padding: 20px;
+  }
+
+  .team-form-container h2 {
+    font-size: 24px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+  }
+}

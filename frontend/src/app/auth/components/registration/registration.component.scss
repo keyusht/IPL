@@ -1,0 +1,134 @@
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* Header */
+.card-header h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Form */
+.user-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #444;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0072ff;
+  outline: none;
+}
+
+/* Error Messages */
+.error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.error small {
+  display: block;
+}
+
+/* Success Message */
+.success {
+  color: #2ecc71;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Submit Button */
+.btn-submit {
+  padding: 12px;
+  background-color: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #005ecb;
+  transform: scale(1.03);
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+/* Login Link */
+.task-list {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #0072ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.task-list:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+
+  .card-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-submit {
+    font-size: 14px;
+  }
+}
